@@ -14,8 +14,9 @@
           <element id="module-output" name="tp_IntelliJ" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: joda-time:joda-time:2.11.2" />
+          <element id="library" level="project" name="Maven: joda-time:joda-time:2.12.0" />
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
+          <element id="library" level="project" name="Maven: org.mariadb.jdbc:mariadb-java-client:3.0.7" />
         </element>
       </element>
       <element id="directory" name="META-INF">
