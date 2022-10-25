@@ -7,12 +7,14 @@ public class Connection {
         String password = "testPass";
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mariadb.jdbc.Driver");
             java.sql.Connection connection = DriverManager.getConnection(url, user, password);
+            System.out.println("Connection successful");
             Statement statement = connection.createStatement();
 
             // Create table client based on the client class
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS client (id INT AUTO_INCREMENT PRIMARY KEY, nom VARCHAR(255), prenom VARCHAR(255), email VARCHAR(255), telephone VARCHAR(255), adresse VARCHAR(255))");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS client (id INT PRIMARY KEY AUTO_INCREMENT, nom VARCHAR(255), prenom VARCHAR(255), email VARCHAR(255), telephone VARCHAR(255), adresse VARCHAR(255))");
+            System.out.println("Table client created");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
