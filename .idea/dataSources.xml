@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="gestion_de_note" uuid="4e926d8f-8667-44fd-bb07-a7da5ce4aa92">
+    <data-source source="LOCAL" name="TP_DB" uuid="a7f19f76-0694-4bc9-a43f-9e832886bb0f">
       <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
