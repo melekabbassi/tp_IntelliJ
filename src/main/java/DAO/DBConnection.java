@@ -2,16 +2,14 @@ package DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Statement;
 
 public class DBConnection {
-    public static String url = "jdbc:mariadb://localhost:3306/gestion_de_note";
-    public static String user = "octopus";
-    public static String password = "testPass";
-
+    private static String url = "jdbc:mariadb://localhost:3306/gestion_de_commande";
+    private static String user = "octopus";
+    private static String password = "testPass";
     public static String driver = "org.mariadb.jdbc.Driver";
 
-    public static void Connect(){
+    public static Connection Connect(){
         try{
             Class.forName(driver);
             Connection connection = DriverManager.getConnection(url, user, password);
@@ -20,9 +18,11 @@ public class DBConnection {
             } else {
                 System.out.println("Failed to make connection!");
             }
+            return connection;
         } catch (Exception e){
             System.out.println("Error: " + e);
         }
+        return null;
     }
 
     public static void main(String[] args) {
