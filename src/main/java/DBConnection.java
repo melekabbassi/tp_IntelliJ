@@ -18,16 +18,10 @@ public class DBConnection {
             } else {
                 System.out.println("Failed to make connection!");
             }
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS client (id INT PRIMARY KEY AUTO_INCREMENT, nom VARCHAR(255), prenom VARCHAR(255), email VARCHAR(255), telephone VARCHAR(255), adresse VARCHAR(255))");
-            System.out.println("Table client created");
         } catch (Exception e){
             System.out.println("Error: " + e);
         }
     }
-
-
-
 
     public static void main(String[] args) {
         Connect();
