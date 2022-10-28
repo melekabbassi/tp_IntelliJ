@@ -2,11 +2,20 @@ package com.sdzee.tp.beans;
 
 public class Client {
     /* Propriétés du bean */
+
+    private int id_client;
     private String nom;
     private String prenom;
     private String adresse;
     private String telephone;
     private String email;
+
+    public int getId_client() {
+        return id_client;
+    }
+    public void setId_client(int id_client) {
+        this.id_client = id_client;
+    }
     public void setNom( String nom ) {
         this.nom = nom;
     }

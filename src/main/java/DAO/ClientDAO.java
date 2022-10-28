@@ -51,6 +51,18 @@ public class ClientDAO extends Client {
         }
     }
 
+    public  void selectClient(){
+        Connection connection = DBConnection.Connect();
+        try {
+            Statement statement = connection.createStatement();
+            String query = "SELECT * FROM client WHERE telephone = " + this.getTelephone();
+            statement.executeQuery(query);
+            System.out.println("Client selected");
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+    }
+
     public void selectAllClient() {
         Connection connection = DBConnection.Connect();
         try {
@@ -62,9 +74,9 @@ public class ClientDAO extends Client {
             System.out.println("Error: " + e);
         }
     }
-
     public static void main(String[] args) {
-        ClientDAO client = new ClientDAO( "Abbassi", "Melek", "49 rue souki belkhir", "56322519", "abbassimelek@gmail.com");
-        client.insertClient();
+        ClientDAO client1 = new ClientDAO( "Abbassi", "Melek", "49 rue souki belkhir", "56322519", "abbassimelek@gmail.com");
+        ClientDAO client2 = new ClientDAO( "octopus", "eth1c", "50 rue souki belkhir", "23548050", "octopus@gmail.com");
+        client1.deleteClient();
     }
 }

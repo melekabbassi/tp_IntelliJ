@@ -2,6 +2,8 @@ package com.sdzee.tp.beans;
 
 public class Commande {
     /* Propriétés du bean */
+
+    private int id_commande;
     private Client client;
     private String date;
     private Double montant;
@@ -9,6 +11,10 @@ public class Commande {
     private String statutPaiement;
     private String modeLivraison;
     private String statutLivraison;
+
+    public int getId_commande() { return id_commande; }
+
+    public void setId_commande(int id_commande) { this.id_commande = id_commande; }
     public Client getClient() {
         return client;
     }
