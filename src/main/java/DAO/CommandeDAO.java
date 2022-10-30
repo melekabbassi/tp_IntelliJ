@@ -23,7 +23,7 @@ public class CommandeDAO extends Commande {
         // create commande in database with client id and commande properties using foreign key
         try {
             Statement statement = connection.createStatement();
-            String sql = "INSERT INTO commande (id_client, date, montant, mode_paiement, statut_Paiement, mode_Livraison, statut_Livraison) VALUES (" + this.getClient().getId_client() + ", '" + this.getDate() + "', " + this.getMontant() + ", '" + this.getModePaiement() + "', '" + this.getStatutPaiement() + "', '" + this.getModeLivraison() + "', '" + this.getStatutLivraison() + "')";
+            String sql = "INSERT INTO commande (id_client, date_commande, montant_commande, mode_paiement, statut_Paiement, mode_Livraison, statut_Livraison) VALUES (" + this.getClient().getId_client() + ", '" + this.getDate() + "', " + this.getMontant() + ", '" + this.getModePaiement() + "', '" + this.getStatutPaiement() + "', '" + this.getModeLivraison() + "', '" + this.getStatutLivraison() + "')";
             statement.executeUpdate(sql);
             System.out.println("Commande inserted");
         } catch (Exception e) {
@@ -36,7 +36,7 @@ public class CommandeDAO extends Commande {
         // update commande in database with client id and commande properties using foreign key
         try {
             Statement statement = connection.createStatement();
-            String sql = "UPDATE commande SET date = '" + this.getDate() + "', montant = " + this.getMontant() + ", mode_paiement = '" + this.getModePaiement() + "', statut_Paiement = '" + this.getStatutPaiement() + "', mode_Livraison = '" + this.getModeLivraison() + "', statut_Livraison = '" + this.getStatutLivraison() + "' WHERE id_commande = " + this.getId_commande();
+            String sql = "UPDATE commande SET date_commande = '" + this.getDate() + "', montant_commande = " + this.getMontant() + ", mode_paiement = '" + this.getModePaiement() + "', statut_Paiement = '" + this.getStatutPaiement() + "', mode_Livraison = '" + this.getModeLivraison() + "', statut_Livraison = '" + this.getStatutLivraison() + "' WHERE id_commande = " + this.getId_commande();
             statement.executeUpdate(sql);
             System.out.println("Commande updated");
         } catch (Exception e) {
@@ -114,7 +114,7 @@ public class CommandeDAO extends Commande {
         // select commande in database with client id and commande properties using foreign key
         try {
             Statement statement = connection.createStatement();
-            String sql = "SELECT * FROM commande WHERE date = '" + this.getDate() + "'";
+            String sql = "SELECT * FROM commande WHERE date_commande = '" + this.getDate() + "'";
             statement.executeQuery(sql);
             System.out.println("Commande selected");
         } catch (Exception e) {
@@ -127,7 +127,7 @@ public class CommandeDAO extends Commande {
         // select all commande in database with client id and commande properties using foreign key
         try {
             Statement statement = connection.createStatement();
-            String sql = "SELECT * FROM commande WHERE date = '" + this.getDate() + "'";
+            String sql = "SELECT * FROM commande WHERE date_commande = '" + this.getDate() + "'";
             statement.executeQuery(sql);
             System.out.println("All commande selected");
         } catch (Exception e) {
@@ -136,9 +136,12 @@ public class CommandeDAO extends Commande {
     }
 
     public static void main(String[] args) {
-        ClientDAO client2 = new ClientDAO( "octopus", "eth1c", "50 rue souki belkhir", "23548050", "octopus@gmail.com");
-        client2.insertClient();
-        CommandeDAO commande2 = new CommandeDAO(client2, "2020-12-12", 100.0, "paypal", "payé", "dhl", "livré");
-        commande2.insertCommande();
+        ClientDAO client3 = new ClientDAO("allela", "mohamed", "fes", "56565656", "allelamohamed@hotmail.com");
+        client3.insertClient();
+        CommandeDAO commande3 = new CommandeDAO(client3, "2020-12-12", 1000.0, "paypal", "payé", "livraison", "livré");
+        commande3.insertCommande();
+
+        CommandeDAO commande4 = new CommandeDAO(client3, "2020-12-12", 1000.0, "paypal", "payé", "livraison", "livré");
+        commande4.insertCommande();
     }
 }
