@@ -4,9 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBConnection {
-    private static String url = "jdbc:mariadb://localhost:3306/gestion_de_commande";
-    private static String user = "octopus";
-    private static String password = "testPass";
+    private static final String url = "jdbc:mariadb://localhost:3306/gestion_de_commande";
+    private static final String user = "octopus";
+    private static final String  password = "testPass";
     public static String driver = "org.mariadb.jdbc.Driver";
 
     public static Connection Connect(){
