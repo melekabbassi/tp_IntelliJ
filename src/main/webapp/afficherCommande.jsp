@@ -29,7 +29,7 @@
     <p>Email: <c:out value="${ commande.client.email }" /></p>
     <p>Commande</p>
     <p>Date: <c:out value="${commande.date}" /></p>
-    <p>Montant: <c:out value="${commande.montant}" /></p>
+    <p>Montant: <c:out value="${commande.montant_commande}" /></p>
     <p>Mode de paiement: <c:out value="${commande.modePaiement}" /></p>
     <p>Statut du paiement: <c:out value="${commande.statutPaiement}" /></p>
     <p>Mode de livraison: <c:out value="${commande.modeLivraison}" /></p>

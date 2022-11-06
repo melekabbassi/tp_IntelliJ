@@ -1,10 +1,89 @@
 package DAO;
 
+import com.sdzee.tp.beans.Client;
 import com.sdzee.tp.beans.Commande;
 
 import java.sql.Connection;
 import java.sql.Statement;
 
+/*
+* Make a CommandeDAO class extending the Commande class. It's going to be used to connect to the database using DBConnection class and make the CRUD operations.
+* the commands are going to be made by the clients. So, the Client attribute is going to identify the client who made the order (commande).
+*
+* */
+
+public class CommandeDAO extends Commande {
+
+    public CommandeDAO() {
+    }
+
+    public CommandeDAO(int id_commande, Client client, String date_commande, Double montant, String mode_paiement, String statut_paiement, String mode_livraison, String statut_livraison) {
+        super(id_commande, client, date_commande, montant, mode_paiement, statut_paiement, mode_livraison, statut_livraison);
+    }
+
+    public void addCommande(Commande commande) {
+        try {
+            Connection connection = DBConnection.Connect();
+            Statement statement = connection.createStatement();
+            String sql = "INSERT INTO commande (id_client, date_commande, montant_commande, mode_paiement, statut_paiement, mode_livraison, statut_livraison) VALUES ('" + commande.getClient().getId_client() + "', '" + commande.getDate_commande() + "', '" + commande.getMontant_commande() + "', '" + commande.getMode_paiement() + "', '" + commande.getStatut_paiement() + "', '" + commande.getMode_livraison() + "', '" + commande.getStatut_livraison() + "')";
+            statement.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteCommande(Commande commande) {
+        try {
+            Connection connection = DBConnection.Connect();
+            Statement statement = connection.createStatement();
+            String sql = "DELETE FROM commande WHERE id_commande = " + commande.getId_commande();
+            statement.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateCommande(Commande commande) {
+        try {
+            Connection connection = DBConnection.Connect();
+            Statement statement = connection.createStatement();
+            String sql = "UPDATE commande SET id_client = '" + commande.getClient().getId_client() + "', date_commande = '" + commande.getDate_commande() + "', montant_commande = '" + commande.getMontant_commande() + "', mode_paiement = '" + commande.getMode_paiement() + "', statut_paiement = '" + commande.getStatut_paiement() + "', mode_livraison = '" + commande.getMode_livraison() + "', statut_livraison = '" + commande.getStatut_livraison() + "' WHERE id_commande = " + commande.getId_commande();
+            statement.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getCommande(Commande commande) {
+        try {
+            Connection connection = DBConnection.Connect();
+            Statement statement = connection.createStatement();
+            String sql = "SELECT * FROM commande WHERE id_commande = " + commande.getId_commande();
+            statement.executeQuery(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /* test the class */
+
+    public static void main(String[] args) {
+        CommandeDAO commandeDAO = new CommandeDAO();
+        /* add a new client */
+
+        Client client = new Client();
+        client.setId_client(1);
+        Commande commande = new Commande(client, "2020-01-01", 100.0, "paypal", "paid", "ups", "delivered");
+        commandeDAO.addCommande(commande);
+
+        /* select a client */
+        commande.setId_commande(1);
+        commandeDAO.getCommande(commande);
+        System.out.println(commande);
+    }
+}
+
+/*
 public class CommandeDAO extends Commande {
     public CommandeDAO(ClientDAO client, String date, Double montant, String modePaiement, String statutPaiement, String modeLivraison, String statutLivraison) {
         super();
@@ -136,12 +215,7 @@ public class CommandeDAO extends Commande {
     }
 
     public static void main(String[] args) {
-        ClientDAO client3 = new ClientDAO("allela", "mohamed", "fes", "56565656", "allelamohamed@hotmail.com");
-        client3.insertClient();
-        CommandeDAO commande3 = new CommandeDAO(client3, "2020-12-12", 1000.0, "paypal", "payé", "livraison", "livré");
-        commande3.insertCommande();
 
-        CommandeDAO commande4 = new CommandeDAO(client3, "2020-12-12", 1000.0, "paypal", "payé", "livraison", "livré");
-        commande4.insertCommande();
     }
 }
+*/

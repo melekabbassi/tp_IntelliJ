@@ -85,12 +85,12 @@ obligatoires
         client.setEmail( email );
         Commande commande = new Commande();
         commande.setClient( client );
-        commande.setDate( date );
-        commande.setMontant( montant );
-        commande.setModePaiement( modePaiement );
-        commande.setStatutPaiement( statutPaiement );
-        commande.setModeLivraison( modeLivraison );
-        commande.setStatutLivraison( statutLivraison );
+        commande.setDate_commande( date );
+        commande.setMontant_commande( montant );
+        commande.setMode_paiement( modePaiement );
+        commande.setStatut_paiement( statutPaiement );
+        commande.setMode_livraison( modeLivraison );
+        commande.setStatut_livraison( statutLivraison );
         /* Ajout du bean et du message à l'objet requête */
         request.setAttribute(ATT_COMMANDE, commande );
         request.setAttribute(ATT_MESSAGE, message );

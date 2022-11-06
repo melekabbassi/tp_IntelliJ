@@ -5,6 +5,56 @@ import com.sdzee.tp.beans.Client;
 import java.sql.Connection;
 import java.sql.Statement;
 
+/*
+* Make a CLientDAO class extending the client class. It's going to be used to connect to the database using DBConnection class and make the CRUD operations.
+*
+* */
+
+public class ClientDAO extends Client {
+
+    public ClientDAO() {
+    }
+
+    public ClientDAO(int id_client, String nom, String prenom, String adresse, String telephone, String email) {
+        super(id_client, nom, prenom, adresse, telephone, email);
+    }
+
+    public void addClient(Client client) {
+        try {
+            Connection connection = DBConnection.Connect();
+            Statement statement = connection.createStatement();
+            String sql = "INSERT INTO client (nom, prenom, adresse, telephone, email) VALUES ('" + client.getNom() + "', '" + client.getPrenom() + "', '" + client.getAdresse() + "', '" + client.getTelephone() + "', '" + client.getEmail() + "')";
+            statement.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteClient(Client client) {
+        try {
+            Connection connection = DBConnection.Connect();
+            Statement statement = connection.createStatement();
+            String sql = "DELETE FROM client WHERE id_client = " + client.getId_client();
+            statement.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateClient(Client client) {
+        try {
+            Connection connection = DBConnection.Connect();
+            Statement statement = connection.createStatement();
+            String sql = "UPDATE client SET nom = '" + client.getNom() + "', prenom = '" + client.getPrenom() + "', adresse = '" + client.getAdresse() + "', telephone = '" + client.getTelephone() + "', email = '" + client.getEmail() + "' WHERE id_client = " + client.getId_client();
+            statement.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+/*
 public class ClientDAO extends Client {
     public ClientDAO(String nom, String prenom, String adresse, String telephone, String email) {
         super();
@@ -80,3 +130,4 @@ public class ClientDAO extends Client {
         client1.deleteClient();
     }
 }
+*/
